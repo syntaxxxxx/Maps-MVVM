@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+  compileSdkVersion 28
+  defaultConfig {
+    applicationId "com.syntax.learn"
+    minSdkVersion 19
+    targetSdkVersion 28
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+  implementation "com.android.support:appcompat-v7:$support_lib_version"
+  implementation "com.android.support:design:$support_lib_version"
+  implementation "com.google.android.gms:play-services-maps:$play_services_version"
+  implementation "com.google.android.gms:play-services-location:$play_services_version"
+  implementation "com.google.android.gms:play-services-places:$play_services_version"
+  implementation "android.arch.lifecycle:extensions:$architecture_version"
+  implementation "android.arch.persistence.room:runtime:$room_version"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.19.3"
+
+  annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+  annotationProcessor "android.arch.lifecycle:compiler:$architecture_version"
+
+  kapt "android.arch.persistence.room:compiler:$room_version"
+
+  testImplementation 'junit:junit:4.12'
+  androidTestImplementation 'com.android.support.test:runner:1.0.1'
+  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
